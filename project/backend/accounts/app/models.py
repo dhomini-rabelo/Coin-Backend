@@ -4,7 +4,6 @@ from django.db.models import (Model, CharField, DateTimeField, TextField, EmailF
 
 
 class User(AbstractUser):
-    img = ImageField(upload_to='users/%Y/%m/%d', null=True, blank=True)
 
     def __str__(self):
         return self.username
