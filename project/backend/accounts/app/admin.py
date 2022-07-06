@@ -13,8 +13,8 @@ class UserAdmin(auth_admin.UserAdmin):
     form = UserChangeForm
     add_form = UserCreationForm
     model = User
-    fieldsets = auth_admin.UserAdmin.fieldsets + (
-    ("My fields", {"fields": ("img",)}),
-    )
+    fieldsets = auth_admin.UserAdmin.fieldsets # + (
+    # ("My fields", {"fields": []}),
+    # )
     list_display = 'first_name', 'username'
     list_display_links = 'first_name', 'username'
