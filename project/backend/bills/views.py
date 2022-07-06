@@ -1,4 +1,8 @@
-from django.shortcuts import render, redirect
+from rest_framework import generics
+from backend.bills.actions.objects.serializers import BillSerializer
+from backend.bills.app.models import Bill
 
 
-BP = 'pages' # base path
+class BillListCreateApi(generics.ListCreateAPIView):
+    queryset = Bill.objects.all()
+    serializer_class = BillSerializer
