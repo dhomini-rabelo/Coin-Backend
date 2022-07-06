@@ -11,5 +11,5 @@ class Bill(Model):
     value = DecimalField(max_digits=50, decimal_places=2)
     is_income = BooleanField()
     use_notification = BooleanField(default=False, blank=True)
-    date = DateField(blank=True, null=True)
+    day = CharField(max_length=2, blank=True, null=True)
     
