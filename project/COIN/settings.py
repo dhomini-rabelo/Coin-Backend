@@ -115,3 +115,10 @@ ACCOUNT_SESSION_REMEMBER = True
 STATIC_PAGE_CACHE_TIMEOUT = 60*60*2
 
 AUTH_USER_MODEL = 'accounts.User'
+
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    )
+}
