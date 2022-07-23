@@ -13,3 +13,12 @@ class Bill(Model):
     use_notification = BooleanField(default=False, blank=True)
     day = CharField(max_length=2, blank=True, null=True)
     
+
+    def save(self, *args, **kwargs):
+        if self.day.isnumeric():
+            raise Exception('Day attribute is not numeric')
+        elif int(self.day) <= 28:
+            raise Exception('Invalid day for save notification')
+        else:
+            return super().save(*args, **kwargs)
+
