@@ -15,9 +15,9 @@ class Bill(Model):
     
 
     def save(self, *args, **kwargs):
-        if self.day.isnumeric():
+        if self.day and self.day.isnumeric():
             raise Exception('Day attribute is not numeric')
-        elif int(self.day) <= 28:
+        elif self.day and (int(self.day) <= 28):
             raise Exception('Invalid day for save notification')
         else:
             return super().save(*args, **kwargs)
