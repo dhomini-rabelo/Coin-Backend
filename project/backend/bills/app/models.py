@@ -7,7 +7,7 @@ class Bill(Model):
     user = ForeignKey(User, on_delete=CASCADE)
     title = CharField(max_length=256)
     description = TextField()
-    bill_type = CharField(max_length=256)
+    bill_type = CharField(max_length=256, choices=[('1', 'fast'), ('2', 'scheduled')])
     value = DecimalField(max_digits=50, decimal_places=2)
     is_income = BooleanField()
     use_notification = BooleanField(default=False, blank=True)
