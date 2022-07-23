@@ -6,3 +6,6 @@ class BillsConfig(AppConfig):
     name = 'backend.bills.app'
     verbose_name = 'bills'
     label = 'bills'
+
+    def ready(self):
+        import backend.bills.app.signals
