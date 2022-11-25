@@ -1,3 +1,4 @@
+from datetime import timedelta
 from decouple import config
 from pathlib import Path
 import os
@@ -86,6 +87,9 @@ CACHES = {
 
 SESSION_ENGINE = "django.contrib.sessions.backends.cache"
 SESSION_CACHE_ALIAS = "default"
+NOTIFICATION_TIMEOUT = timedelta(days=3)
+
+
 
 AUTH_PASSWORD_VALIDATORS = [
     {
