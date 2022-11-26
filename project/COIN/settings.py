@@ -14,8 +14,8 @@ DEBUG = config('DEBUG', default=False, cast=bool)
 
 ALLOWED_HOSTS: list[str] = []
 
-CORS_ALLOWED_ORIGINS = [
-    'localhost:3000'
+CORS_ALLOWED_ORIGINS: list[str] = [
+    # 'localhost:3000'
 ]
 
 PROJECT_NAME = 'COIN'
