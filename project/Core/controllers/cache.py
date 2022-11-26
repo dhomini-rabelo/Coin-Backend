@@ -6,7 +6,7 @@ class CacheController:
 
     def __init__(self, cache_name: str):
         self.name = cache_name
-        self.urls = []
+        self.urls: list[str] = []
 
     def get(self, url: str, id_for_cache: str | None = None) -> Any:
         return cache.get(self.get_cache_name_for_save(url, id_for_cache))

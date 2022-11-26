@@ -12,7 +12,7 @@ SECRET_KEY = config('SECRET_KEY')
 
 DEBUG = config('DEBUG', default=False, cast=bool)
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS: list[str] = []
 
 PROJECT_NAME = 'COIN'
 
@@ -67,16 +67,11 @@ WSGI_APPLICATION = 'COIN.wsgi.application'
 
 
 DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.postgresql",
-        "NAME": "postgres",
-        "USER": "postgres",
-        "PASSWORD": "postgres",
-        "HOST": "pgdb",
-        "PORT": 5432,
-    },
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': Path(BASE_DIR, 'db.sqlite3'),
+    }
 }
-
 
 CACHES = {
     'default': {
