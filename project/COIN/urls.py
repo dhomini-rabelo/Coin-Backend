@@ -11,8 +11,8 @@ from rest_framework_simplejwt.views import (
 urlpatterns = [
     path('', include('backend.bills.urls')),
     path('admin/', admin.site.urls),
-    path('token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
-    path('token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
+    path('api/get-token', TokenObtainPairView.as_view(), name='get_token'),
+    path('api/refresh-token', TokenRefreshView.as_view(), name='refresh_token'),
 ]
 
 
