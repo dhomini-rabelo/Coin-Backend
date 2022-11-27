@@ -1,6 +1,7 @@
 # django
 from django.core.validators import validate_slug, validate_unicode_slug, validate_email
 from django.core.exceptions import ValidationError
+from django.db.models import Model, QuerySet
 # others
 from string import ascii_letters, digits, punctuation
 from typing import Any
@@ -29,13 +30,10 @@ def validate_for_email(email: str):
         return False
     
     
-def validate_unique(Model, field_name: str, field: Any, use_queryset=False):
-    model = Model.objects if not use_queryset else Model
+def validate_unique(ModelObj: Model | QuerySet, field_name: str, field_value: Any, use_queryset=False):
+    model = ModelObj.objects if not use_queryset else Model
     current_fields = model.values_list(field_name, flat=True)
-    
-    if field in current_fields:
-        return False
-    return True
+    return field_value not in current_fields
 
 
 
