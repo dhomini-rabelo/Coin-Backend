@@ -1,5 +1,7 @@
 from rest_framework.permissions import BasePermission
 from rest_framework import generics
+from Core.api.utils.user import UseAuthenticatedUser
+from Core.api.utils.without import WithoutPatch
 from backend.accounts.actions.api.user.serializers import ChangeEmailSerializer, UserSerializer
 from ..app.models import User
 
@@ -10,6 +12,6 @@ class CreateUserAPI(generics.CreateAPIView):
     permission_classes: list[BasePermission] = []
 
 
-class ChangeEmailAPI(generics.CreateAPIView):
+class ChangeEmailAPI(UseAuthenticatedUser, WithoutPatch, generics.UpdateAPIView):
     serializer_class = ChangeEmailSerializer
     queryset = User.objects.all()
