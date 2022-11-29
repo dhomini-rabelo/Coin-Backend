@@ -1,1 +1,1 @@
-from .user import CreateUserApi
+from .user import CreateUserAPI, ChangeEmailAPI
