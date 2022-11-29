@@ -10,3 +10,6 @@ class CreateUserRequestBodyType(TypedDict):
 class CreateUserValidatedDataType(TypedDict):
     username: str
     password: str
+
+class ChangeEmailValidatedDataType(TypedDict):
+    email: str
