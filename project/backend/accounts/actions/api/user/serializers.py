@@ -1,6 +1,6 @@
 from rest_framework import serializers
 from Fast.forms.validators import validate_unique
-from backend.accounts.actions.api.user.typings import ChangeEmailValidatedDataType, CreateUserRequestBodyType, CreateUserValidatedDataType
+from backend.accounts.actions.api.user.typings import ChangeEmailValidatedDataType, ChangePasswordRequestBodyType, ChangePasswordValidatedDataType, CreateUserRequestBodyType, CreateUserValidatedDataType
 from backend.accounts.app.models import User
 
 
@@ -49,3 +49,26 @@ class ChangeEmailSerializer(ValidateEmailSupport, serializers.ModelSerializer):
     class Meta:
         model = User
         fields = 'email', 
+
+
+class ChangePasswordSerializer(ValidateEmailSupport, serializers.ModelSerializer):
+
+    def to_representation(self, instance):
+        return {}
+
+    def validate(self, validated_data: ChangePasswordValidatedDataType):
+        initial_data: ChangePasswordRequestBodyType = self.initial_data
+        user: User = self.instance
+        if user.check_password(initial_data.get('current_password')):
+            return validated_data
+        else:
+            raise serializers.ValidationError({'current_password': ['Senha incorreta']})
+
+    def update(self, instance: User, validated_data: ChangePasswordValidatedDataType):
+        instance.set_password(validated_data['password'])
+        instance.save()
+        return instance
+
+    class Meta:
+        model = User
+        fields = 'password',
