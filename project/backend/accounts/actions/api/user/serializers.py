@@ -79,3 +79,11 @@ class ChangeNotificationTimeSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
         fields = 'notification_time',
+
+
+
+class UserMyAccountSerializer(serializers.ModelSerializer):
+    
+    class Meta:
+        model = User
+        fields = 'notification_time',

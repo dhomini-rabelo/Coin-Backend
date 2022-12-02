@@ -12,7 +12,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('backend.bills.urls')),
     path('api/', include('backend.accounts.urls')),
-    path('api/get-token', TokenObtainPairView.as_view(), name='get_token'),
+    # api/get-token in backend.accounts.urls
     path('api/refresh-token', TokenRefreshView.as_view(), name='refresh_token'),
 ]
 
