@@ -1,1 +1,1 @@
-from .user import CreateUserAPI, ChangeEmailAPI, ChangePasswordAPI
+from .user import CreateUserAPI, ChangeEmailAPI, ChangePasswordAPI, ChangeNotificationTimeAPI

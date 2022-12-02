@@ -2,7 +2,7 @@ from rest_framework.permissions import BasePermission
 from rest_framework import generics
 from Core.api.utils.user import UseAuthenticatedUser
 from Core.api.utils.without import WithoutPatch
-from backend.accounts.actions.api.user.serializers import ChangeEmailSerializer, ChangePasswordSerializer, UserSerializer
+from backend.accounts.actions.api.user.serializers import ChangeEmailSerializer, ChangeNotificationTimeSerializer, ChangePasswordSerializer, UserSerializer
 from ..app.models import User
 
 
@@ -19,4 +19,9 @@ class ChangeEmailAPI(UseAuthenticatedUser, WithoutPatch, generics.UpdateAPIView)
 
 class ChangePasswordAPI(UseAuthenticatedUser, WithoutPatch, generics.UpdateAPIView):
     serializer_class = ChangePasswordSerializer
+    queryset = User.objects.all()
+
+
+class ChangeNotificationTimeAPI(UseAuthenticatedUser, WithoutPatch, generics.UpdateAPIView):
+    serializer_class = ChangeNotificationTimeSerializer
     queryset = User.objects.all()

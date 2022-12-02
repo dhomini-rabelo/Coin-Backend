@@ -51,7 +51,7 @@ class ChangeEmailSerializer(ValidateEmailSupport, serializers.ModelSerializer):
         fields = 'email', 
 
 
-class ChangePasswordSerializer(ValidateEmailSupport, serializers.ModelSerializer):
+class ChangePasswordSerializer(serializers.ModelSerializer):
 
     def to_representation(self, instance):
         return {}
@@ -72,3 +72,10 @@ class ChangePasswordSerializer(ValidateEmailSupport, serializers.ModelSerializer
     class Meta:
         model = User
         fields = 'password',
+
+
+class ChangeNotificationTimeSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = User
+        fields = 'notification_time',
