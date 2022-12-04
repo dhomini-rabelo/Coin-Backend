@@ -7,20 +7,19 @@ from Core.controllers.cache import CacheController
 
 
 
-def dinamic_cache_for_api(cache_controller: CacheController, name_id: str):
+def dynamic_cache_for_api(cache_controller: CacheController, name_id: str):
     """
     Create global cache page for dinamic url without timeout
     """
     def decorator_function(view_function):
         def wrapper_function(*args, **kwargs):
             request = args[0]
-            url = request.path
-            has_cache = cache_controller.has_cache(url, name_id)
+            has_cache = cache_controller.has_cache(request, name_id)
             if not has_cache:
                 response = view_function(*args, **kwargs)
-                cache_controller.save(response.data, request.path, name_id)
+                cache_controller.save(response.data, request, name_id)
                 return response
-            return Response(cache_controller.get(url, name_id))
+            return Response(cache_controller.get(request, name_id))
         return wrapper_function
     return decorator_function
 
