@@ -10,7 +10,7 @@ from rest_framework_simplejwt.views import (
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('backend.bills.urls')),
+    path('api/', include('backend.bills.urls')),
     path('api/', include('backend.accounts.urls')),
     # api/get-token in backend.accounts.urls
     path('api/refresh-token', TokenRefreshView.as_view(), name='refresh_token'),

@@ -1,4 +1,4 @@
-from Fast.django.decorators.cache.api import dinamic_cache_for_api
+from Fast.django.decorators.cache.api import dynamic_cache_for_api
 from backend.bills.actions.api.bills.serializers import BillSerializer
 from backend.bills.app.models import Bill
 from rest_framework import generics
@@ -18,7 +18,7 @@ class BillListCreateAPI(generics.ListCreateAPIView):
         return Bill.objects.filter(user__id=self.request.user.id)
     
     def get(self, request):
-        return dinamic_cache_for_api(bill_cache, self.cache_id)(super().get)(request)
+        return dynamic_cache_for_api(bill_cache, self.cache_id)(super().get)(request)
 
     def post(self, request):
         if hasattr(request, 'data') and isinstance(request.data, dict):

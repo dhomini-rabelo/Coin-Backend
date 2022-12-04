@@ -4,7 +4,7 @@ from django.db.models.signals import post_save, post_delete
 
 
 def renew_bill_cache(sender, instance, created, **kwargs):
-    bill_cache.delete_all()
+    bill_cache.delete_only('api/bills', str(instance.id))
 
 
 post_save.connect(renew_bill_cache, sender=Bill)
