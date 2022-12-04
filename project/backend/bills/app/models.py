@@ -1,6 +1,6 @@
 from django.db.models import (Model, CharField, DateTimeField, TextField, EmailField, ForeignKey, PositiveIntegerField, ImageField, RESTRICT, DecimalField, DateField, BooleanField, SET_NULL, CASCADE)
 from backend.accounts.app.models import User
-from backend.bills.app.support.models import BILL_TYPE_CHOICES
+from backend.bills.app.support.choices import BILL_TYPE_CHOICES
 
 
 class Bill(Model):
