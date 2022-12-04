@@ -1,7 +1,6 @@
 from django.urls import path
-from .views import *
+from . import api
 
 urlpatterns = [
-    path('bills', BillListCreateApi.as_view()),
-    path('bills/<int:pk>', BillDetailApi.as_view()),
+    path('bills', api.BillListCreateAPI.as_view()), # route used in backend/bills/app/signals.py
 ]
