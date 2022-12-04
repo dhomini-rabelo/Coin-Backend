@@ -15,7 +15,7 @@ class Bill(Model):
     
 
     def save(self, *args, **kwargs):
-        if int(self.day) > 28:
+        if self.day and (int(self.day) > 28):
             raise Exception('Invalid day for save notification')
         else:
             return super().save(*args, **kwargs)
