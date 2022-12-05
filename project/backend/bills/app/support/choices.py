@@ -4,3 +4,10 @@ BILL_TYPE_CHOICES = [
     ['expense', 'Despesa'],
     ['scheduled_expense', 'Despesa agendada'],
 ]
+
+PAYMENT_METHOD_CHOICES = [
+    ['money', 'Dinheiro'],
+    ['card', 'Cartão'],
+    ['billet', 'Boleto'],
+    ['pix', 'PIX'],
+]
