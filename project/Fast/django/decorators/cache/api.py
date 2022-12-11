@@ -15,11 +15,11 @@ def dynamic_cache_for_api(cache_controller: CacheController, name_id: str):
         def wrapper_function(*args, **kwargs):
             request = args[0]
             has_cache = cache_controller.has_cache(request, name_id)
-            if not has_cache:
+            if not has_cache['response']:
                 response = view_function(*args, **kwargs)
                 cache_controller.save(response.data, request, name_id)
                 return response
-            return Response(cache_controller.get(request, name_id))
+            return Response(has_cache['cache_data'])
         return wrapper_function
     return decorator_function
 
