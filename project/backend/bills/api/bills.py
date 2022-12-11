@@ -15,7 +15,7 @@ class BillListCreateAPI(generics.ListCreateAPIView):
 
     @property
     def queryset(self):
-        return Bill.objects.filter(user__id=self.request.user.id)
+        return Bill.objects.filter(user__id=self.request.user.id).order_by('-created_at')
     
     def get(self, request):
         return dynamic_cache_for_api(bill_cache, self.cache_id)(super().get)(request)
