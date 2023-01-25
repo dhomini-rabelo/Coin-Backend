@@ -1,7 +1,11 @@
-from rest_framework import serializers
-from Fast.forms.validators import validate_unique
-from backend.accounts.actions.api.user.typings import ChangeEmailValidatedDataType, ChangePasswordRequestBodyType, ChangePasswordValidatedDataType, CreateUserRequestBodyType, CreateUserValidatedDataType
+from backend.accounts.actions.api.user.typings import (
+    ChangeEmailValidatedDataType, ChangePasswordRequestBodyType,
+    ChangePasswordValidatedDataType, CreateUserRequestBodyType,
+    CreateUserValidatedDataType
+)
 from backend.accounts.app.models import User
+from Fast.forms.validators import validate_unique
+from rest_framework import serializers
 
 
 class ValidateEmailSupport:
@@ -41,9 +45,11 @@ class UserSerializer(ValidateEmailSupport, serializers.ModelSerializer):
         fields = 'email', 'password',
 
 
-class ChangeEmailSerializer(ValidateEmailSupport, serializers.ModelSerializer):
+class ChangeEmailSerializer(serializers.ModelSerializer):
 
     def update(self, instance: User, validated_data: ChangeEmailValidatedDataType):
+        if not validated_data.get('email'):
+            raise serializers.ValidationError({'email': ['Este campo é obrigatório']})
         return super().update(instance, {**validated_data, 'username': validated_data['email']})
 
     class Meta:
