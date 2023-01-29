@@ -30,6 +30,7 @@ A pasta COIN é onde está a configuração do projeto
 <ul>
 <li>Django</li>
 <li>Django Rest Framework</li>
+<li>Django signals</li>
 <li>django-cors-headers</li>
 <li>simplejwt</li>
 <li>Fast</li>
@@ -113,12 +114,18 @@ A pasta COIN é onde está a configuração do projeto
 <br>
 <li>
     <h3>Cadastrar conta - "/api/bills"</h3>
-    <img src="./readme/change_email.gif">
+    <img src="./readme/create_bill.gif">
 </li>
 
 <br>
 <li>
     <h3>Listar contas - "/api/bills"</h3>
+    <p>
+        Esta API faz o cache das contas enquanto nenhuma conta for alterada, excluída ou adicionada para esse usuário, esse controle só é possível através do Django signals. <br>
+        Classe que faz o controle do cache (CacheController) e uma instância (bill_cache): "project/Core/controllers/cache.py"<br>
+        Api que usa o cache com um decorator (BillListCreateAPI): "project/backend/bills/api/bills.py"<br>
+        Signals que remove o cache (renew_bill_cache): "project/backend/bills/app/signals.py"<br>
+    </p>
     <img src="./readme/bills.gif">
 </li>
 
