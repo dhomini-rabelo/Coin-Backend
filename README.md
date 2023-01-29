@@ -121,10 +121,10 @@ A pasta COIN é onde está a configuração do projeto
 <li>
     <h3>Listar contas - "/api/bills"</h3>
     <p>
-        Esta API faz o cache das contas enquanto nenhuma conta for alterada, excluída ou adicionada para esse usuário, esse controle só é possível através do Django signals. <br>
-        Classe que faz o controle do cache (CacheController) e uma instância (bill_cache): "project/Core/controllers/cache.py"<br>
-        Api que usa o cache com um decorator (BillListCreateAPI): "project/backend/bills/api/bills.py"<br>
-        Signals que remove o cache (renew_bill_cache): "project/backend/bills/app/signals.py"<br>
+        Esta API faz o cache das contas enquanto nenhuma conta for alterada, excluída ou adicionada para esse usuário, esse controle só é possível através do Django signals. <br><br>
+        <strong>Classe que faz o controle do cache (CacheController) e uma instância (bill_cache):</strong> "project/Core/controllers/cache.py"<br>
+        <strong>Api que usa o cache com um decorator (BillListCreateAPI):</strong> "project/backend/bills/api/bills.py"<br>
+        <strong>Signals que remove o cache (renew_bill_cache):</strong> "project/backend/bills/app/signals.py"<br>
     </p>
     <img src="./readme/bills.gif">
 </li>
